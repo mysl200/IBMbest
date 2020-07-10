@@ -13,7 +13,7 @@ create_mainfest_file(){
     echo "内存大小：${IBM_MEM_SIZE}"
     
     
-    cat >  ${SH_PATH}/IBMYes/v2ray-cloudfoundry/manifest.yml  << EOF
+    cat >  ${SH_PATH}/IBMbest/v2ray-cloudfoundry/manifest.yml  << EOF
     applications:
     - path: .
       name: ${IBM_APP_NAME}
@@ -26,18 +26,18 @@ EOF
 
 clone_repo(){
     echo "进行初始化。。。"
-    git clone https://github.com/CCChieh/IBMYes
-    cd IBMYes
+    git clone https://github.com/maystop/IBMbest
+    cd IBMbest
     git submodule update --init --recursive
     cd v2ray-cloudfoundry/v2ray
     chmod +x *
-    cd ${SH_PATH}/IBMYes/v2ray-cloudfoundry
+    cd ${SH_PATH}/IBMbest/v2ray-cloudfoundry
     echo "初始化完成。"
 }
 
 install(){
     echo "进行安装。。。"
-    cd ${SH_PATH}/IBMYes/v2ray-cloudfoundry
+    cd ${SH_PATH}/IBMbest/v2ray-cloudfoundry
     UUID=$(cat /proc/sys/kernel/random/uuid)
     echo "uuid: " $UUID
     sed -i "s/id\": .*\"/id\": \"$UUID\"/g" ./v2ray/config.json
